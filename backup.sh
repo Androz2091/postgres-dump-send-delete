@@ -29,4 +29,4 @@ rm -rf $BACKUPS_DIR/$BACKUP_NAME.sql
 rsync -avz --delete -e ssh $BACKUPS_DIR $REMOTE_HOST_USERNAME@$REMOTE_HOST_ADDRESS:$REMOTE_HOST_PATH
 
 # Then delete the tar file
-rm -rf $BACKUP_NAME.tar.gz
+rm -rf $BACKUPS_DIR/$BACKUP_NAME.tar.gz
