@@ -23,7 +23,7 @@ $PG_PATH -F p -f $BACKUPS_DIR/$BACKUP_NAME.sql -U postgres $PG_DATABASE
 tar -zcvf $BACKUPS_DIR/$BACKUP_NAME.tar.gz $BACKUPS_DIR/$BACKUP_NAME.sql
 
 # Synchronize the backups folder with the remote server (send the missing file)
-rsync -avz --exclude='*.sql' --delete -e ssh $BACKUPS_DIR $REMOTE_HOST_USERNAME@$REMOTE_HOST_ADDRESS:$REMOTE_HOST_PATH
+rsync -avz --exclude='*.sql' -e ssh $BACKUPS_DIR $REMOTE_HOST_USERNAME@$REMOTE_HOST_ADDRESS:$REMOTE_HOST_PATH
 
 # Then delete the rest of the files
 find $BACKUPS_DIR/ ! -name $BACKUP_NAME.sql -type f -exec rm -f {} +
